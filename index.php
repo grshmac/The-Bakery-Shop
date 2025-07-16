@@ -1,4 +1,4 @@
-<!-- Strona główna strony -->
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -80,7 +80,7 @@ font-size: large;
         session_start();
         if(isset($_SESSION["UserID"])){
           echo '
-          <li><a class="menu-link" href="menu.php">Menu</a></li>
+          <li><a class="menu-link" href="menu2.php">Menu</a></li>
           <li><a class="menu-link" href="userpanel.php">AccInfo</a></li>
           <li><a class="menu-link" href="orderhistory.php">Wishlist</a></li>
           <li><a class="menu-link" href="cart.php">Basket<span class="material-symbols-outlined">shopping_basket</span></a></li>
@@ -98,7 +98,7 @@ font-size: large;
         }
         else{
           echo '
-          <li><a class="menu-link" href="menu.php">Menu</a></li>
+          <li><a class="menu-link" href="menu2.php">Menu</a></li>
           <li><a class="menu-link" href="adminlogin.php">Admin</a></li>
           <li><a class="menu-link" href="login.php">Basket<span class="material-symbols-outlined">shopping_basket</span></a></li>
           <li><a class="link-button" href="login.php">Login</a></li>

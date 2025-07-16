@@ -1,8 +1,6 @@
-<!-- Admin login -->
+
 <?php
-/**
-* displaying information if login failed or if the admin was successfully registered
-*/
+/*displaying information if login failed or if the admin was successfully registered*/
 include('head2.php');
 include('connection.php');
 session_start();
@@ -122,16 +120,17 @@ if(!empty($_POST['employeeID']) and !empty($_POST['password']))
   $password = $_POST['password'];
 
   openConnection();
-  global $serwer;
+  global $conn; // changed from $serwer to $conn
+
   //retrieving an employee's password from the database
-  $getPassword = mysqli_fetch_array(mysqli_query($serwer, "SELECT Password FROM employee WHERE EmployeeID = '$employeeID'"));
+  $getPassword = mysqli_fetch_array(mysqli_query($conn, "SELECT Password FROM employee WHERE EmployeeID = '$employeeID'"));
   $userPassword = $getPassword[0];
 
   //comparing the given password with the password from the database
   if($password == $userPassword)
   {
     //downloading employee data from the database
-    $getInfo = mysqli_fetch_array(mysqli_query($serwer, "SELECT * FROM employee WHERE EmployeeID = '$employeeID'"));
+    $getInfo = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM employee WHERE EmployeeID = '$employeeID'"));
 
     $_SESSION["EmployeeID"] = $getInfo[2];
     $_SESSION["EmployeeName"] = $getInfo[0]." ".$getInfo[1];
@@ -146,4 +145,5 @@ if(!empty($_POST['employeeID']) and !empty($_POST['password']))
 else
 {
 }
- ?>
+?>
+

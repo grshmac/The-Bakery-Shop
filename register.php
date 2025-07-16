@@ -1,8 +1,5 @@
-<!-- User registration page -->
+<!-- user registration page -->
 <?php
-/**
-* display information if registration failed
-*/
 include 'head2.php';
 include('connection.php');
 if(isset($_SESSION["UserID"]) || isset($_SESSION["EmployeeID"])){
@@ -107,10 +104,10 @@ else{
 
            <tr><td> <h4><b style="color: wheat;">Password:</b></h4></td>
            <td><input class="login-input" type="password" name="password" placeholder="Password"></td></tr>
-           
+
            <tr><td> <h4><b style="color: wheat;">Last Name:</b></h4></td>
            <td><input class="login-input" type="password" name="password-repeat" placeholder="Repeat Password"></td></tr>
-        
+
            <tr><td colspan='2'>
            <input class="register-submit" type="submit" name="login-submit" value="Submit"></td></tr>
 </table></form>
@@ -119,7 +116,7 @@ else{
          <p class="login-p" style="color: #fff; font-size:20px;">Registered? <a href="login.php" style="color: wheat; background-color:olive;">SignIn</a></p>
        </div>
      </section>
-    
+
 </body>
 </html>
 
@@ -130,20 +127,18 @@ else{
 if(!empty($_POST['name']) and !empty($_POST['surname']) and !empty($_POST['email']) and !empty($_POST['password']) and !empty($_POST['password-repeat']))
 {
   openConnection();
-  global $serwer;
+  global $conn;
 
-    if($_POST['password-repeat'] == $_POST['password']){
+  if($_POST['password-repeat'] == $_POST['password']){
     $name = $_POST['name'];
     $surname = $_POST['surname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $password_repeat = $_POST['password-repeat'];
+
     $query = "INSERT INTO `user` (`name`, `surname`, `email`, `password`) VALUES ('$name', '$surname', '$email', '$password');";
-    mysqli_query($serwer, $query);
+    mysqli_query($conn, $query);
     closeConnection();
-    /**
-    * If registration is successful, you will be redirected to the login page
-    */
     header("Location: login.php?msg=2");
   }
   else
@@ -153,4 +148,5 @@ if(!empty($_POST['name']) and !empty($_POST['surname']) and !empty($_POST['email
 }
 else{
 }
- ?>
+?>
+
